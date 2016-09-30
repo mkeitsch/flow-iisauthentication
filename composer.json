@@ -1,0 +1,18 @@
+{
+    "name": "mkcom/iisauthentication",
+    "description": "Flow package that authenticates an username against the IIS PHP environment variable.",
+    "type": "neos-package",
+    "require": {
+        "typo3/flow": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "MKcom\\IISAuthentication": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "MKcom.IISAuthentication"
+        }
+    }
+}
