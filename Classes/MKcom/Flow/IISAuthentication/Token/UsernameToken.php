@@ -1,5 +1,5 @@
 <?php
-namespace MKcom\IISAuthentication\Token;
+namespace MKcom\Flow\IISAuthentication\Token;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\ActionRequest;
@@ -9,7 +9,7 @@ use TYPO3\Flow\Security\Authentication\Token\SessionlessTokenInterface;
 /**
  * Class UsernameToken
  *
- * @package MKcom\IISAuthentication\Token
+ * @package MKcom\Flow\IISAuthentication\Token
  */
 class UsernameToken extends AbstractToken implements SessionlessTokenInterface
 {

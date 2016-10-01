@@ -1,7 +1,7 @@
 <?php
-namespace MKcom\IISAuthentication\Provider;
+namespace MKcom\Flow\IISAuthentication\Provider;
 
-use MKcom\IISAuthentication\Token\UsernameToken;
+use MKcom\Flow\IISAuthentication\Token\UsernameToken;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Authentication\Provider\AbstractProvider;
 use TYPO3\Flow\Security\Authentication\TokenInterface;
@@ -10,7 +10,7 @@ use TYPO3\Flow\Security\Exception\UnsupportedAuthenticationTokenException;
 /**
  * Class UsernameProvider
  *
- * @package MKcom\IISAuthentication\Provider
+ * @package MKcom\Flow\IISAuthentication\Provider
  */
 class UsernameProvider extends AbstractProvider
 {
