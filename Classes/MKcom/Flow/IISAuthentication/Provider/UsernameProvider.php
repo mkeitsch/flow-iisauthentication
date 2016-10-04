@@ -1,6 +1,10 @@
 <?php
 namespace MKcom\Flow\IISAuthentication\Provider;
 
+/*
+ * This file is part of the MKcom.Flow.IISAuthentication package.
+ */
+
 use MKcom\Flow\IISAuthentication\Token\UsernameToken;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Authentication\Provider\AbstractProvider;
