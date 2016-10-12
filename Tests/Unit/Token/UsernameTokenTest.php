@@ -19,7 +19,7 @@ class UsernameTokenTest extends UnitTestCase
     public function theServerVariableCanBeReadCorrectly()
     {
         if (!isset($_SERVER['AUTH_USER']) && !isset($_SERVER['LOGON_USER']) && !isset($_SERVER['REMOTE_USER'])) {
-            $this->markTestSkipped('Please set on of the following environment variables to "test.dummy@test-domain.test": AUTH_USER, LOGON_USER, REMOTE_USER');
+            $this->markTestSkipped('Please set one of the following environment variables to "test.dummy@test-domain.test": AUTH_USER, LOGON_USER, REMOTE_USER');
         }
 
         $token = new UsernameToken();

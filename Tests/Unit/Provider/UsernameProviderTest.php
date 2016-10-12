@@ -77,7 +77,7 @@ class UsernameProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function authenticationSuccessesWithCorrectUsernameInAnUsernameToken()
+    public function authenticationSucceedWithCorrectUsernameInAnUsernameToken()
     {
         $this->mockAccountRepository->expects($this->once())->method('findActiveByAccountIdentifierAndAuthenticationProviderName')->with('test.dummy2', 'myProvider')->will($this->returnValue($this->mockAccount));
 
