@@ -31,12 +31,14 @@ class UsernameToken extends AbstractToken implements SessionlessTokenInterface
     {
         $username = '';
 
-        if (isset($_SERVER['AUTH_USER'])) {
-            $username = $_SERVER['AUTH_USER'];
-        } elseif (isset($_SERVER['LOGON_USER'])) {
-            $username = $_SERVER['LOGON_USER'];
-        } elseif (isset($_SERVER['REMOTE_USER'])) {
-            $username = $_SERVER['REMOTE_USER'];
+        $serverParams = $actionRequest->getHttpRequest()->getServerParams();
+
+        if (isset($serverParams['AUTH_USER'])) {
+            $username = $serverParams['AUTH_USER'];
+        } elseif (isset($serverParams['LOGON_USER'])) {
+            $username = $serverParams['LOGON_USER'];
+        } elseif (isset($serverParams['REMOTE_USER'])) {
+            $username = $serverParams['REMOTE_USER'];
         } else {
             return;
         }

@@ -6,6 +6,7 @@ namespace MKcom\Flow\IISAuthentication\Tests\Unit\Token;
  */
 
 use MKcom\Flow\IISAuthentication\Token\UsernameToken;
+use TYPO3\Flow\Http\Request;
 use TYPO3\Flow\Mvc\ActionRequest;
 use TYPO3\Flow\Security\Authentication\TokenInterface;
 use TYPO3\Flow\Tests\UnitTestCase;
@@ -15,15 +16,16 @@ class UsernameTokenTest extends UnitTestCase
 
     /**
      * @test
+     * @dataProvider serverVariablesDataProvider
      */
-    public function theServerVariableCanBeReadCorrectly()
+    public function theServerVariableCanBeReadCorrectly($serverVariable)
     {
-        if (!isset($_SERVER['AUTH_USER']) && !isset($_SERVER['LOGON_USER']) && !isset($_SERVER['REMOTE_USER'])) {
-            $this->markTestSkipped('Please set one of the following environment variables to "test.dummy@test-domain.test": AUTH_USER, LOGON_USER, REMOTE_USER');
-        }
-
         $token = new UsernameToken();
-        $actionRequest = $this->createMock(ActionRequest::class);
+        $httpRequest = $this->getAccessibleMock(Request::class, array(), array(), '', FALSE);
+        $actionRequest = $this->getAccessibleMock(ActionRequest::class, array(), array(), '', FALSE);
+
+        $httpRequest->expects($this->once())->method('getServerParams')->willReturn($serverVariable);
+        $actionRequest->expects($this->once())->method('getHttpRequest')->willReturn($httpRequest);
 
         $this->assertEquals(TokenInterface::NO_CREDENTIALS_GIVEN, $token->getAuthenticationStatus());
 
@@ -31,6 +33,18 @@ class UsernameTokenTest extends UnitTestCase
 
         $this->assertEquals(TokenInterface::AUTHENTICATION_NEEDED, $token->getAuthenticationStatus());
         $this->assertEquals(array('username' => 'test.dummy'), $token->getCredentials());
+    }
+
+    /**
+     * @return array
+     */
+    public function serverVariablesDataProvider()
+    {
+        return array(
+            array(array('AUTH_USER' => 'test.dummy@test-domain.test')),
+            array(array('LOGON_USER' => 'test.dummy@test-domain.test')),
+            array(array('REMOTE_USER' => 'test.dummy@test-domain.test')),
+        );
     }
 
 }
