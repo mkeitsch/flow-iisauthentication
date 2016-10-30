@@ -5,6 +5,7 @@ namespace MKcom\Flow\IISAuthentication\Provider;
  * This file is part of the MKcom.Flow.IISAuthentication package.
  */
 
+use MKcom\Flow\IISAuthentication\Token\UsernameTestingToken;
 use MKcom\Flow\IISAuthentication\Token\UsernameToken;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Authentication\Provider\AbstractProvider;
@@ -43,7 +44,7 @@ class UsernameProvider extends AbstractProvider
      */
     public function getTokenClassNames()
     {
-        return array(UsernameToken::class);
+        return array(UsernameToken::class, UsernameTestingToken::class);
     }
 
     /**
@@ -56,7 +57,7 @@ class UsernameProvider extends AbstractProvider
      */
     public function authenticate(TokenInterface $authenticationToken)
     {
-        if (!($authenticationToken instanceof UsernameToken)) {
+        if (!$authenticationToken instanceof UsernameToken && !$authenticationToken instanceof UsernameTestingToken) {
             throw new UnsupportedAuthenticationTokenException('This provider cannot authenticate the given token.',
                 1475247112);
         }

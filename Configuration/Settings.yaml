@@ -1,0 +1,5 @@
+MKcom:
+  Flow:
+    IISAuthentication:
+      usernameTestingToken:
+#        username: 'exmaple.username' # can be used to emulate the IIS authentication
