@@ -6,7 +6,6 @@ namespace MKcom\Flow\IISAuthentication\Token;
  */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Log\SystemLoggerInterface;
 use TYPO3\Flow\Mvc\ActionRequest;
 use TYPO3\Flow\Security\Authentication\Token\AbstractToken;
 use TYPO3\Flow\Security\Authentication\Token\SessionlessTokenInterface;
@@ -18,6 +17,7 @@ use TYPO3\Flow\Security\Authentication\Token\SessionlessTokenInterface;
  */
 class UsernameTestingToken extends AbstractToken implements SessionlessTokenInterface
 {
+
     /**
      * @Flow\Transient
      * @var array
@@ -31,13 +31,7 @@ class UsernameTestingToken extends AbstractToken implements SessionlessTokenInte
     protected $usernameFromConfiguration;
 
     /**
-     * @Flow\Inject
-     * @var SystemLoggerInterface
-     */
-    protected $systemLogger;
-
-    /**
-     * @param \TYPO3\Flow\Mvc\ActionRequest $actionRequest The current action request
+     * @param ActionRequest $actionRequest The current action request
      * @return void
      */
     public function updateCredentials(ActionRequest $actionRequest)
@@ -55,4 +49,5 @@ class UsernameTestingToken extends AbstractToken implements SessionlessTokenInte
     {
         return 'Username: "' . $this->credentials['username'] . '"';
     }
+
 }

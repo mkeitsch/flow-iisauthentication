@@ -11,12 +11,20 @@ use TYPO3\Flow\Mvc\ActionRequest;
 use TYPO3\Flow\Security\Authentication\TokenInterface;
 use TYPO3\Flow\Tests\UnitTestCase;
 
+/**
+ * Class UsernameTokenTest
+ *
+ * @package MKcom\Flow\IISAuthentication\Tests\Unit\Token
+ */
 class UsernameTokenTest extends UnitTestCase
 {
 
     /**
      * @test
      * @dataProvider serverVariablesDataProvider
+     *
+     * @param array $serverVariable
+     * @return void
      */
     public function theServerVariableCanBeReadCorrectly($serverVariable)
     {
