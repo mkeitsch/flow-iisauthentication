@@ -1,8 +1,8 @@
 <?php
-namespace MKcom\Flow\IISAuthentication\Token;
+namespace MKcom\Flow\IntegratedAuthentication\Token;
 
 /*
- * This file is part of the MKcom.Flow.IISAuthentication package.
+ * This file is part of the MKcom.Flow.IntegratedAuthentication package.
  */
 
 use TYPO3\Flow\Annotations as Flow;
@@ -13,7 +13,7 @@ use TYPO3\Flow\Security\Authentication\Token\SessionlessTokenInterface;
 /**
  * Class UsernameTestingToken
  *
- * @package MKcom\Flow\IISAuthentication\Token
+ * @package MKcom\Flow\IntegratedAuthentication\Token
  */
 class UsernameTestingToken extends AbstractToken implements SessionlessTokenInterface
 {
