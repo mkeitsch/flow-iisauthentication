@@ -9,7 +9,7 @@
         "mkcom/flow-iisauthentication": "self.version"
     },
     "autoload": {
-        "psr-4": {
+        "psr-0": {
             "MKcom\\Flow\\IntegratedAuthentication\\": "Classes/"
         }
     },
