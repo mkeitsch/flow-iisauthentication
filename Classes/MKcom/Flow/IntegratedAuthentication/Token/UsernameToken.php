@@ -1,8 +1,8 @@
 <?php
-namespace MKcom\Flow\IISAuthentication\Token;
+namespace MKcom\Flow\IntegratedAuthentication\Token;
 
 /*
- * This file is part of the MKcom.Flow.IISAuthentication package.
+ * This file is part of the MKcom.Flow.IntegratedAuthentication package.
  */
 
 use TYPO3\Flow\Annotations as Flow;
@@ -13,10 +13,11 @@ use TYPO3\Flow\Security\Authentication\Token\SessionlessTokenInterface;
 /**
  * Class UsernameToken
  *
- * @package MKcom\Flow\IISAuthentication\Token
+ * @package MKcom\Flow\IntegratedAuthentication\Token
  */
 class UsernameToken extends AbstractToken implements SessionlessTokenInterface
 {
+
     /**
      * @Flow\Transient
      * @var array
@@ -24,7 +25,7 @@ class UsernameToken extends AbstractToken implements SessionlessTokenInterface
     protected $credentials = array('username' => '');
 
     /**
-     * @param \TYPO3\Flow\Mvc\ActionRequest $actionRequest The current action request
+     * @param ActionRequest $actionRequest The current action request
      * @return void
      */
     public function updateCredentials(ActionRequest $actionRequest)
@@ -47,12 +48,10 @@ class UsernameToken extends AbstractToken implements SessionlessTokenInterface
 
             $username = strtolower($username);
 
-            // Removes all after '@'
             if (stripos($username, "@") !== FALSE) {
                 $username = substr($username, 0, stripos($username, "@"));
             }
 
-            // Removes all before '\'
             if (stripos($username, "\\") !== FALSE) {
                 $username = substr($username, stripos($username, "\\") + 1, strlen($username));
             }
@@ -69,4 +68,5 @@ class UsernameToken extends AbstractToken implements SessionlessTokenInterface
     {
         return 'Username: "' . $this->credentials['username'] . '"';
     }
+
 }

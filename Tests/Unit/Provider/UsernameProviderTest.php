@@ -1,30 +1,39 @@
 <?php
-namespace MKcom\Flow\IISAuthentication\Tests\Unit\Provider;
+namespace MKcom\Flow\IntegratedAuthentication\Tests\Unit\Provider;
 
 /*
- * This file is part of the MKcom.Flow.IISAuthentication package.
+ * This file is part of the MKcom.Flow.IntegratedAuthentication package.
  */
 
-use MKcom\Flow\IISAuthentication\Provider\UsernameProvider;
-use MKcom\Flow\IISAuthentication\Token\UsernameToken;
+use MKcom\Flow\IntegratedAuthentication\Provider\UsernameProvider;
+use MKcom\Flow\IntegratedAuthentication\Token\UsernameToken;
+use TYPO3\Flow\Persistence\PersistenceManagerInterface;
+use TYPO3\Flow\Security\Account;
+use TYPO3\Flow\Security\AccountRepository;
+use TYPO3\Flow\Security\Context as SecurityContext;
 use TYPO3\Flow\Security\Exception\UnsupportedAuthenticationTokenException;
 use TYPO3\Flow\Tests\UnitTestCase;
 
+/**
+ * Class UsernameProviderTest
+ *
+ * @package MKcom\Flow\IntegratedAuthentication\Tests\Unit\Provider
+ */
 class UsernameProviderTest extends UnitTestCase
 {
 
     /**
-     * @var \TYPO3\Flow\Security\Account
+     * @var Account
      */
     protected $mockAccount;
 
     /**
-     * @var \TYPO3\Flow\Security\AccountRepository
+     * @var AccountRepository
      */
     protected $mockAccountRepository;
 
     /**
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+     * @var PersistenceManagerInterface
      */
     protected $mockPersistenceManager;
 
@@ -34,7 +43,7 @@ class UsernameProviderTest extends UnitTestCase
     protected $mockToken;
 
     /**
-     * @var \TYPO3\Flow\Security\Context
+     * @var SecurityContext
      */
     protected $mockSecurityContext;
 
@@ -43,7 +52,9 @@ class UsernameProviderTest extends UnitTestCase
      */
     protected $usernameProvider;
 
-
+    /**
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
@@ -66,6 +77,8 @@ class UsernameProviderTest extends UnitTestCase
 
     /**
      * @test
+     *
+     * @return void
      */
     public function authenticatingAnUsernameTokenFetchesAccountWithDisabledAuthorization()
     {
@@ -76,6 +89,8 @@ class UsernameProviderTest extends UnitTestCase
 
     /**
      * @test
+     *
+     * @return void
      */
     public function authenticationSucceedWithCorrectUsernameInAnUsernameToken()
     {
@@ -89,6 +104,8 @@ class UsernameProviderTest extends UnitTestCase
 
     /**
      * @test
+     *
+     * @return void
      */
     public function authenticatingAnUnsupportedTokenThrowsAnException()
     {
@@ -103,6 +120,8 @@ class UsernameProviderTest extends UnitTestCase
 
     /**
      * @test
+     *
+     * @return void
      */
     public function canAuthenticateReturnsTrueOnlyForAnTokenThatHasTheCorrectProviderNameSet()
     {
@@ -116,4 +135,5 @@ class UsernameProviderTest extends UnitTestCase
         $this->assertTrue($usernamePasswordProvider->canAuthenticate($mockToken1));
         $this->assertFalse($usernamePasswordProvider->canAuthenticate($mockToken2));
     }
+
 }

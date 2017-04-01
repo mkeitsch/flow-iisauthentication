@@ -1,39 +1,44 @@
 <?php
-namespace MKcom\Flow\IISAuthentication\Provider;
+namespace MKcom\Flow\IntegratedAuthentication\Provider;
 
 /*
- * This file is part of the MKcom.Flow.IISAuthentication package.
+ * This file is part of the MKcom.Flow.IntegratedAuthentication package.
  */
 
-use MKcom\Flow\IISAuthentication\Token\UsernameTestingToken;
-use MKcom\Flow\IISAuthentication\Token\UsernameToken;
+use MKcom\Flow\IntegratedAuthentication\Token\UsernameTestingToken;
+use MKcom\Flow\IntegratedAuthentication\Token\UsernameToken;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Persistence\PersistenceManagerInterface;
+use TYPO3\Flow\Security\Account;
+use TYPO3\Flow\Security\AccountRepository;
 use TYPO3\Flow\Security\Authentication\Provider\AbstractProvider;
 use TYPO3\Flow\Security\Authentication\TokenInterface;
+use TYPO3\Flow\Security\Context as SecurityContext;
 use TYPO3\Flow\Security\Exception\UnsupportedAuthenticationTokenException;
 
 /**
  * Class UsernameProvider
  *
- * @package MKcom\Flow\IISAuthentication\Provider
+ * @package MKcom\Flow\IntegratedAuthentication\Provider
  */
 class UsernameProvider extends AbstractProvider
 {
+
     /**
-     * @var \TYPO3\Flow\Security\AccountRepository
      * @Flow\Inject
+     * @var AccountRepository
      */
     protected $accountRepository;
 
     /**
-     * @var \TYPO3\Flow\Security\Context
      * @Flow\Inject
+     * @var SecurityContext
      */
     protected $securityContext;
 
     /**
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
      * @Flow\Inject
+     * @var PersistenceManagerInterface
      */
     protected $persistenceManager;
 
@@ -51,9 +56,9 @@ class UsernameProvider extends AbstractProvider
      * Checks the given token for validity and sets the token authentication status
      * accordingly (success, wrong credentials or no credentials given).
      *
-     * @param \TYPO3\Flow\Security\Authentication\TokenInterface $authenticationToken The token to be authenticated
+     * @param TokenInterface $authenticationToken The token to be authenticated
      * @return void
-     * @throws \TYPO3\Flow\Security\Exception\UnsupportedAuthenticationTokenException
+     * @throws UnsupportedAuthenticationTokenException
      */
     public function authenticate(TokenInterface $authenticationToken)
     {
@@ -62,7 +67,7 @@ class UsernameProvider extends AbstractProvider
                 1475247112);
         }
 
-        /** @var $account \TYPO3\Flow\Security\Account */
+        /** @var Account $account */
         $account = null;
         $credentials = $authenticationToken->getCredentials();
 
@@ -93,4 +98,5 @@ class UsernameProvider extends AbstractProvider
             $authenticationToken->setAuthenticationStatus(TokenInterface::NO_CREDENTIALS_GIVEN);
         }
     }
+
 }
