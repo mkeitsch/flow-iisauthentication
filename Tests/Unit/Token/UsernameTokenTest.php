@@ -1,11 +1,11 @@
 <?php
-namespace MKcom\Flow\IISAuthentication\Tests\Unit\Token;
+namespace MKcom\Flow\IntegratedAuthentication\Tests\Unit\Token;
 
 /*
- * This file is part of the MKcom.Flow.IISAuthentication package.
+ * This file is part of the MKcom.Flow.IntegratedAuthentication package.
  */
 
-use MKcom\Flow\IISAuthentication\Token\UsernameToken;
+use MKcom\Flow\IntegratedAuthentication\Token\UsernameToken;
 use TYPO3\Flow\Http\Request;
 use TYPO3\Flow\Mvc\ActionRequest;
 use TYPO3\Flow\Security\Authentication\TokenInterface;
@@ -14,7 +14,7 @@ use TYPO3\Flow\Tests\UnitTestCase;
 /**
  * Class UsernameTokenTest
  *
- * @package MKcom\Flow\IISAuthentication\Tests\Unit\Token
+ * @package MKcom\Flow\IntegratedAuthentication\Tests\Unit\Token
  */
 class UsernameTokenTest extends UnitTestCase
 {

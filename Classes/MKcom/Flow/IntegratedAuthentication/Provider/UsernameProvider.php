@@ -1,12 +1,12 @@
 <?php
-namespace MKcom\Flow\IISAuthentication\Provider;
+namespace MKcom\Flow\IntegratedAuthentication\Provider;
 
 /*
- * This file is part of the MKcom.Flow.IISAuthentication package.
+ * This file is part of the MKcom.Flow.IntegratedAuthentication package.
  */
 
-use MKcom\Flow\IISAuthentication\Token\UsernameTestingToken;
-use MKcom\Flow\IISAuthentication\Token\UsernameToken;
+use MKcom\Flow\IntegratedAuthentication\Token\UsernameTestingToken;
+use MKcom\Flow\IntegratedAuthentication\Token\UsernameToken;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\PersistenceManagerInterface;
 use TYPO3\Flow\Security\Account;
@@ -19,7 +19,7 @@ use TYPO3\Flow\Security\Exception\UnsupportedAuthenticationTokenException;
 /**
  * Class UsernameProvider
  *
- * @package MKcom\Flow\IISAuthentication\Provider
+ * @package MKcom\Flow\IntegratedAuthentication\Provider
  */
 class UsernameProvider extends AbstractProvider
 {

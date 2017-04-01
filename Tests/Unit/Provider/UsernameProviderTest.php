@@ -1,12 +1,12 @@
 <?php
-namespace MKcom\Flow\IISAuthentication\Tests\Unit\Provider;
+namespace MKcom\Flow\IntegratedAuthentication\Tests\Unit\Provider;
 
 /*
- * This file is part of the MKcom.Flow.IISAuthentication package.
+ * This file is part of the MKcom.Flow.IntegratedAuthentication package.
  */
 
-use MKcom\Flow\IISAuthentication\Provider\UsernameProvider;
-use MKcom\Flow\IISAuthentication\Token\UsernameToken;
+use MKcom\Flow\IntegratedAuthentication\Provider\UsernameProvider;
+use MKcom\Flow\IntegratedAuthentication\Token\UsernameToken;
 use TYPO3\Flow\Persistence\PersistenceManagerInterface;
 use TYPO3\Flow\Security\Account;
 use TYPO3\Flow\Security\AccountRepository;
@@ -17,7 +17,7 @@ use TYPO3\Flow\Tests\UnitTestCase;
 /**
  * Class UsernameProviderTest
  *
- * @package MKcom\Flow\IISAuthentication\Tests\Unit\Provider
+ * @package MKcom\Flow\IntegratedAuthentication\Tests\Unit\Provider
  */
 class UsernameProviderTest extends UnitTestCase
 {

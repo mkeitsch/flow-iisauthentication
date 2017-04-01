@@ -1,18 +1,26 @@
 {
-    "name": "mkcom/flow-iisauthentication",
-    "description": "Flow package that authenticates an username against the IIS PHP environment variable.",
+    "name": "mkcom/flow-integratedauthentication",
+    "description": "Flow package that authenticates an username against the PHP AUTH_USER / LOGON_USER / REMOTE_USER environment variable.",
     "type": "neos-package",
     "require": {
         "typo3/flow": "^3.3"
     },
+    "replace": {
+        "mkcom/flow-iisauthentication": "self.version"
+    },
     "autoload": {
         "psr-0": {
-            "MKcom\\Flow\\IISAuthentication\\": "Classes"
+            "MKcom\\Flow\\IntegratedAuthentication\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MKcom\\Flow\\IntegratedAuthentication\\Tests\\": "Tests/"
         }
     },
     "extra": {
         "neos": {
-            "package-key": "MKcom.Flow.IISAuthentication"
+            "package-key": "MKcom.Flow.IntegratedAuthentication"
         }
     }
 }
