@@ -3,7 +3,7 @@
     "description": "Flow package that authenticates an username against the PHP AUTH_USER / LOGON_USER / REMOTE_USER environment variable.",
     "type": "neos-package",
     "require": {
-        "typo3/flow": "^3.3"
+        "neos/flow": "^3.3"
     },
     "replace": {
         "mkcom/flow-iisauthentication": "self.version"
